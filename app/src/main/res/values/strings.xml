@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Repeated Taks</string>
+    <string name="task_name">Nome da Tarefa</string>
+</resources>
