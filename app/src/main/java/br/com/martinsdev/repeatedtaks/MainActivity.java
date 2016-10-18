@@ -1,15 +1,14 @@
 package br.com.martinsdev.repeatedtaks;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.AlarmManager;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ListView;
-
-import java.util.ArrayList;
 
 import br.com.martinsdev.repeatedtaks.adapter.TaskAdapter;
-import br.com.martinsdev.repeatedtaks.model.Task;
+import br.com.martinsdev.repeatedtaks.model.SingletonTaskList;
+import br.com.martinsdev.repeatedtaks.util.alarm.Alarm;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,15 +17,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Task task01 = new Task("Academia");
-        Task task02 = new Task("Pós-Graduação");
-        Task task03 = new Task("Livro");
-
-        ArrayList<Task> tasks = new ArrayList<>();
-        tasks.add(task01);
-        tasks.add(task02);
-        tasks.add(task03);
-
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.task_list);
         recyclerView.setHasFixedSize(true);
 
@@ -34,8 +24,10 @@ public class MainActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        TaskAdapter adapter = new TaskAdapter(tasks);
+        TaskAdapter adapter = new TaskAdapter(SingletonTaskList.getTasks());
         recyclerView.setAdapter(adapter);
+
+        Alarm.setAlarm(MainActivity.this, 4, 0, AlarmManager.INTERVAL_DAY);
 
     }
 }
