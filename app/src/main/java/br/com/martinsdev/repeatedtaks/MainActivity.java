@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 import br.com.martinsdev.repeatedtaks.adapter.TaskAdapter;
 import br.com.martinsdev.repeatedtaks.model.SingletonTaskList;
 import br.com.martinsdev.repeatedtaks.util.alarm.Alarm;
@@ -27,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
         TaskAdapter adapter = new TaskAdapter(SingletonTaskList.getTasks());
         recyclerView.setAdapter(adapter);
 
-        Alarm.setAlarm(MainActivity.this, 4, 0, AlarmManager.INTERVAL_DAY);
+        if(!Alarm.isSet(MainActivity.this)){
+            Alarm.setAlarm(MainActivity.this, 4, 0, AlarmManager.INTERVAL_DAY);
+        }
 
     }
 }

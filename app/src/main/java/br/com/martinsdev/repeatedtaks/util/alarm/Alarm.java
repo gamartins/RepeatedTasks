@@ -28,4 +28,15 @@ public class Alarm {
         alarmManager.setInexactRepeating(AlarmManager.RTC,
         calendar.getTimeInMillis(), repetition, alarmIntent);
     }
+
+    public static boolean isSet(Context context){
+        intent = new Intent(context, AlarmReceiver.class);
+        alarmIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_NO_CREATE);
+
+        if (alarmIntent == null){
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
