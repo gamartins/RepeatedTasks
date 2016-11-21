@@ -35,6 +35,10 @@ public class SingletonTaskList {
         SingletonTaskList.tasks = tasks;
     }
 
+    public static void addTask(Task task){
+        tasks.add(task);
+    }
+
     public static void resetTasks(){
         Task task01 = new Task("Academia");
         Task task02 = new Task("Pós-Graduação");

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
     tools:context="br.com.martinsdev.repeatedtaks.MainActivity">
 
@@ -14,5 +14,15 @@
         android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button_add_task"
+        android:src="@drawable/ic_add_white_24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="normal"
+        android:layout_gravity="bottom|end"
+        app:layout_anchor="@id/task_list"
+        app:layout_anchorGravity="bottom|right|end"/>
 
 </android.support.design.widget.CoordinatorLayout>
