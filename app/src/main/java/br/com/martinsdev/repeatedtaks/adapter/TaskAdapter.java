@@ -1,6 +1,7 @@
 package br.com.martinsdev.repeatedtaks.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
             public void onCheckedChanged(CompoundButton compoundButton, boolean checkBoxStatus) {
                 if (checkBoxStatus){
                     tasks.remove(tempPosition);
+
+                    Task task = Task.listAll(Task.class).get(tempPosition);
+                    task.setChecked(true);
+                    task.save();
+
                     notifyDataSetChanged();
                 }
             }

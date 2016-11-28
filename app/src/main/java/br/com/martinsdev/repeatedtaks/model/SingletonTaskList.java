@@ -12,15 +12,8 @@ public class SingletonTaskList {
     private static ArrayList<Task> tasks;
 
     private SingletonTaskList() {
-        Task task01 = new Task("Academia");
-        Task task02 = new Task("Pós-Graduação");
-        Task task03 = new Task("Livro");
-        Task task04 = new Task("Cursos Livres");
-        Task task05 = new Task("App");
-        Task task06 = new Task("Casa");
-
-        tasks = new ArrayList<>();
-        tasks.addAll(Arrays.asList(task01, task02, task03, task04, task05, task06));
+        // Exibindo as tarefas não concluidas. O valor 0 é considerado 'false' pela orm.
+        tasks = new ArrayList<>(Task.find(Task.class, "checked = ?", "0"));
     }
 
     public static synchronized SingletonTaskList getInstance(){
@@ -31,23 +24,20 @@ public class SingletonTaskList {
         return tasks;
     }
 
-    public static void setTasks(ArrayList<Task> tasks) {
-        SingletonTaskList.tasks = tasks;
-    }
-
     public static void addTask(Task task){
         tasks.add(task);
+        task.save();
     }
 
     public static void resetTasks(){
-        Task task01 = new Task("Academia");
-        Task task02 = new Task("Pós-Graduação");
-        Task task03 = new Task("Livro");
-        Task task04 = new Task("Cursos Livres");
-        Task task05 = new Task("App");
-        Task task06 = new Task("Casa");
+        ArrayList<Task> tempTasks = new ArrayList<>(Task.listAll(Task.class));
 
-        tasks = new ArrayList<>();
-        tasks.addAll(Arrays.asList(task01, task02, task03, task04, task05, task06));
+        for (Task task : tempTasks) {
+            task.setChecked(false);
+            task.save();
+        }
+
+        // Exibindo as tarefas não concluidas. O valor 1 é considerado 'false' pela orm.
+        tasks = new ArrayList<>(Task.find(Task.class, "checked = ?", "0"));
     }
 }
