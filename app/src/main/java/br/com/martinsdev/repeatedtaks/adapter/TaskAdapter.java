@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import br.com.martinsdev.repeatedtaks.R;
+import br.com.martinsdev.repeatedtaks.model.SingletonTaskList;
 import br.com.martinsdev.repeatedtaks.model.Task;
 
 /**
@@ -25,8 +27,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
     @Override
     public TaskViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_task_list, parent, false);
-        TaskViewHolder viewHolder = new TaskViewHolder(view);
-        return viewHolder;
+
+        return new TaskViewHolder(view);
     }
 
     @Override
@@ -37,12 +39,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checkBoxStatus) {
                 if (checkBoxStatus){
-                    tasks.remove(tempPosition);
-
-                    Task task = Task.listAll(Task.class).get(tempPosition);
+                    // Atualizando a tarefa no banco de dados
+                    Task task = tasks.get(tempPosition);
                     task.setChecked(true);
                     task.save();
 
+                    // Removendo a tarefa da lista exibida no adapter
+                    tasks.remove(tempPosition);
                     notifyDataSetChanged();
                 }
             }
