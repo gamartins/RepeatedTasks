@@ -7,6 +7,7 @@ import com.orm.SugarRecord;
  */
 public class Task extends SugarRecord {
     private String name;
+    private String details;
     private boolean checked;
 
     public Task(){
@@ -24,6 +25,14 @@ public class Task extends SugarRecord {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
     }
 
     public boolean isChecked() {

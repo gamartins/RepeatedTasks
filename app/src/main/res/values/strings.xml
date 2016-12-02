@@ -2,4 +2,8 @@
     <string name="app_name">Repeated Tasks</string>
     <string name="task_name">Nome da Tarefa</string>
     <string name="nova_tarefa">Nova Tarefa</string>
+    <string name="save">Salvar</string>
+    <string name="delete">Deletar</string>
+    <string name="task_saved">Tarefa salva</string>
+    <string name="task_deleted">Tarefa removida</string>
 </resources>

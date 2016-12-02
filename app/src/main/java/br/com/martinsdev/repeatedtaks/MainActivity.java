@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import br.com.martinsdev.repeatedtaks.adapter.TaskAdapter;
 import br.com.martinsdev.repeatedtaks.model.SingletonTaskList;
 import br.com.martinsdev.repeatedtaks.model.Task;
@@ -16,20 +18,23 @@ import br.com.martinsdev.repeatedtaks.util.alarm.Alarm;
 
 public class MainActivity extends AppCompatActivity implements NewTaskDialog.CreatedTask {
     private TaskAdapter adapter;
+    private ArrayList<Task> taskList;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.task_list);
+        recyclerView = (RecyclerView) findViewById(R.id.task_list);
         recyclerView.setHasFixedSize(true);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new TaskAdapter(SingletonTaskList.getTasks());
+        taskList = SingletonTaskList.getTasks();
+        adapter = new TaskAdapter(taskList);
         recyclerView.setAdapter(adapter);
 
         if(!Alarm.isSet(MainActivity.this)){
@@ -46,6 +51,12 @@ public class MainActivity extends AppCompatActivity implements NewTaskDialog.Cre
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
     }
 
     @Override

@@ -1,17 +1,16 @@
 package br.com.martinsdev.repeatedtaks.adapter;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
 import java.util.ArrayList;
-import java.util.List;
 
+import br.com.martinsdev.repeatedtaks.DetailedTaskActivity;
 import br.com.martinsdev.repeatedtaks.R;
-import br.com.martinsdev.repeatedtaks.model.SingletonTaskList;
 import br.com.martinsdev.repeatedtaks.model.Task;
 
 /**
@@ -35,6 +34,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
     public void onBindViewHolder(TaskViewHolder holder, int position) {
         final int tempPosition = position;
         holder.taskName.setText(tasks.get(position).getName());
+        holder.taskName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), DetailedTaskActivity.class);
+                intent.putExtra("position", tempPosition);
+                view.getContext().startActivity(intent);
+            }
+        });
         holder.checkBoxName.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checkBoxStatus) {
