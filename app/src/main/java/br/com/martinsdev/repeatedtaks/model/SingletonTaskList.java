@@ -29,6 +29,11 @@ public class SingletonTaskList {
         task.save();
     }
 
+    public static void removeTask(Task task) {
+        tasks.remove(task);
+        task.delete();
+    }
+
     public static void resetTasks(){
         ArrayList<Task> tempTasks = new ArrayList<>(Task.listAll(Task.class));
 

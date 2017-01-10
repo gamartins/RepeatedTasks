@@ -1,4 +1,4 @@
-package br.com.martinsdev.repeatedtaks;
+package br.com.martinsdev.repeatedtaks.activities.task;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +9,11 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import br.com.martinsdev.repeatedtaks.R;
 import br.com.martinsdev.repeatedtaks.model.SingletonTaskList;
 import br.com.martinsdev.repeatedtaks.model.Task;
 
-public class DetailedTaskActivity extends AppCompatActivity {
+public class DetailedTaskActivity extends AppCompatActivity implements RemoveTaskDialogFragment.RemovedTask {
     private EditText taskName, taskDetails;
     private Task task;
 
@@ -55,10 +56,21 @@ public class DetailedTaskActivity extends AppCompatActivity {
                 return true;
 
             case R.id.delete:
+                RemoveTaskDialogFragment removeTaskDialog = new RemoveTaskDialogFragment();
+                removeTaskDialog.show(getSupportFragmentManager(), "dialog_remove_task");
+
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void OnRemovedTask(Boolean result) {
+        if (result) {
+            SingletonTaskList.removeTask(task);
+            finish();
         }
     }
 }

@@ -9,7 +9,7 @@ import android.widget.CompoundButton;
 
 import java.util.ArrayList;
 
-import br.com.martinsdev.repeatedtaks.DetailedTaskActivity;
+import br.com.martinsdev.repeatedtaks.activities.task.DetailedTaskActivity;
 import br.com.martinsdev.repeatedtaks.R;
 import br.com.martinsdev.repeatedtaks.model.Task;
 

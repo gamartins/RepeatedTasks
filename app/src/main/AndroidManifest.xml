@@ -27,7 +27,7 @@
             android:value="br.com.martinsdev.repeatedtaks" />
         <!-- SugarApp Metadata End -->
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,7 +41,7 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".DetailedTaskActivity" />
+        <activity android:name=".activities.task.DetailedTaskActivity" />
     </application>
 
 </manifest>

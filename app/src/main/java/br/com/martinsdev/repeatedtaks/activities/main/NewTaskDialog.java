@@ -1,4 +1,4 @@
-package br.com.martinsdev.repeatedtaks;
+package br.com.martinsdev.repeatedtaks.activities.main;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -11,7 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import br.com.martinsdev.repeatedtaks.R;
 
 /**
  * Created by gabriel on 11/21/16.

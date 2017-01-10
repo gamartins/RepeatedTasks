@@ -1,4 +1,4 @@
-package br.com.martinsdev.repeatedtaks;
+package br.com.martinsdev.repeatedtaks.activities.main;
 
 import android.app.AlarmManager;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import br.com.martinsdev.repeatedtaks.R;
 import br.com.martinsdev.repeatedtaks.adapter.TaskAdapter;
 import br.com.martinsdev.repeatedtaks.model.SingletonTaskList;
 import br.com.martinsdev.repeatedtaks.model.Task;
