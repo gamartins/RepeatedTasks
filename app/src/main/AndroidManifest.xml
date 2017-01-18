@@ -28,11 +28,6 @@
         <!-- SugarApp Metadata End -->
 
         <activity android:name=".activities.main.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <receiver android:name=".util.alarm.AlarmReceiver">
@@ -42,6 +37,12 @@
         </receiver>
 
         <activity android:name=".activities.task.DetailedTaskActivity" />
+        <activity android:name=".NewMainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -8,7 +8,7 @@
     tools:context="br.com.martinsdev.repeatedtaks.activities.main.MainActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/task_list"
+        android:id="@+id/task_list_old"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -16,13 +16,13 @@
     </android.support.v7.widget.RecyclerView>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/button_add_task"
+        android:id="@+id/button_add_task_old"
         android:src="@drawable/ic_add_white_24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:fabSize="normal"
         android:layout_gravity="bottom|end"
-        app:layout_anchor="@id/task_list"
+        app:layout_anchor="@id/task_list_old"
         app:layout_anchorGravity="bottom|right|end"/>
 
 </android.support.design.widget.CoordinatorLayout>

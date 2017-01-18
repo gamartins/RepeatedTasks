@@ -17,7 +17,8 @@ import br.com.martinsdev.repeatedtaks.model.SingletonTaskList;
 import br.com.martinsdev.repeatedtaks.model.Task;
 import br.com.martinsdev.repeatedtaks.util.alarm.Alarm;
 
-public class MainActivity extends AppCompatActivity implements NewTaskDialog.CreatedTask {
+//public class MainActivity extends AppCompatActivity implements NewTaskDialog.NewTaskDialogListener {
+public class MainActivity extends AppCompatActivity {
     private TaskAdapter adapter;
     private ArrayList<Task> taskList;
     private RecyclerView recyclerView;
@@ -60,8 +61,8 @@ public class MainActivity extends AppCompatActivity implements NewTaskDialog.Cre
         adapter.notifyDataSetChanged();
     }
 
-    @Override
-    public void OnCreatedTask(Boolean result, String taskName) {
+    /*@Override
+    public void onCreatedTask(Boolean result, String taskName) {
         if (result) {
             // Adicionamos uma nova tarefa ao sistema
             SingletonTaskList.addTask(new Task(taskName));
@@ -71,5 +72,5 @@ public class MainActivity extends AppCompatActivity implements NewTaskDialog.Cre
             String msg = "Tarefa '" + taskName + "' criada.";
             Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 }

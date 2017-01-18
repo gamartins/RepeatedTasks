@@ -6,4 +6,7 @@
     <string name="delete">Deletar</string>
     <string name="task_saved">Tarefa salva</string>
     <string name="task_deleted">Tarefa removida</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
