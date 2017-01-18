@@ -1,13 +1,16 @@
-package br.com.martinsdev.repeatedtaks.activities.task;
+package br.com.martinsdev.repeatedtaks.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
-import android.widget.Toast;
+
+import br.com.martinsdev.repeatedtaks.model.SingletonTaskList;
+import br.com.martinsdev.repeatedtaks.model.Task;
 
 /**
  * Created by Gabriel on 10/01/2017.
@@ -16,15 +19,20 @@ import android.widget.Toast;
 public class RemoveTaskDialogFragment extends DialogFragment {
     private RemovedTask callback;
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        Bundle bundle = getArguments();
+        final int position = bundle.getInt("position");
+
         builder.setMessage("Deseja deletar essa tarefa ?")
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        callback.OnRemovedTask(true);
-                        Toast.makeText(getActivity(), "Tarefa deletada", Toast.LENGTH_SHORT).show();
+                        Task task = SingletonTaskList.getTasks().get(position);
+                        SingletonTaskList.removeTask(task);
+                        callback.onRemovedTask();
                     }
                 })
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -49,6 +57,6 @@ public class RemoveTaskDialogFragment extends DialogFragment {
     }
 
     public interface RemovedTask {
-        void OnRemovedTask(Boolean result);
+        void onRemovedTask();
     }
 }

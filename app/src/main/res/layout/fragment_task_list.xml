@@ -2,6 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="16dp"
+    android:paddingLeft="16dp"
+    android:paddingStart="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="br.com.martinsdev.repeatedtaks.fragments.TaskListFragment">
 

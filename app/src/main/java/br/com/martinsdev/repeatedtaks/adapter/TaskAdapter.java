@@ -1,6 +1,8 @@
 package br.com.martinsdev.repeatedtaks.adapter;
 
-import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +11,8 @@ import android.widget.CompoundButton;
 
 import java.util.ArrayList;
 
-import br.com.martinsdev.repeatedtaks.activities.task.DetailedTaskActivity;
 import br.com.martinsdev.repeatedtaks.R;
+import br.com.martinsdev.repeatedtaks.fragments.TaskDetailedFragment;
 import br.com.martinsdev.repeatedtaks.model.Task;
 
 /**
@@ -18,9 +20,11 @@ import br.com.martinsdev.repeatedtaks.model.Task;
  */
 public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
     private ArrayList<Task> tasks;
+    private AppCompatActivity activity;
 
-    public TaskAdapter(ArrayList<Task> tasks){
+    public TaskAdapter(ArrayList<Task> tasks, AppCompatActivity activity){
         this.tasks = tasks;
+        this.activity = activity;
     }
 
     @Override
@@ -37,9 +41,16 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
         holder.taskName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), DetailedTaskActivity.class);
-                intent.putExtra("position", tempPosition);
-                view.getContext().startActivity(intent);
+                Bundle bundle = new Bundle();
+                bundle.putInt("position", tempPosition);
+
+                TaskDetailedFragment detailedFragment = new TaskDetailedFragment();
+                detailedFragment.setArguments(bundle);
+
+                FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_principal, detailedFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
         holder.checkBoxName.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

@@ -1,23 +1,16 @@
 package br.com.martinsdev.repeatedtaks.activities.main;
 
-import android.app.AlarmManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import br.com.martinsdev.repeatedtaks.R;
 import br.com.martinsdev.repeatedtaks.adapter.TaskAdapter;
-import br.com.martinsdev.repeatedtaks.model.SingletonTaskList;
 import br.com.martinsdev.repeatedtaks.model.Task;
-import br.com.martinsdev.repeatedtaks.util.alarm.Alarm;
 
-//public class MainActivity extends AppCompatActivity implements NewTaskDialog.NewTaskDialogListener {
+//public class MainActivity extends AppCompatActivity implements NewTaskDialogFragment.NewTaskDialogListener {
 public class MainActivity extends AppCompatActivity {
     private TaskAdapter adapter;
     private ArrayList<Task> taskList;
@@ -28,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = (RecyclerView) findViewById(R.id.task_list);
+        /*recyclerView = (RecyclerView) findViewById(R.id.task_list);
         recyclerView.setHasFixedSize(true);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -48,10 +41,10 @@ public class MainActivity extends AppCompatActivity {
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NewTaskDialog taskDialog = new NewTaskDialog();
+                NewTaskDialogFragment taskDialog = new NewTaskDialogFragment();
                 taskDialog.show(getSupportFragmentManager(), "dialog_new_task");
             }
-        });
+        });*/
 
     }
 

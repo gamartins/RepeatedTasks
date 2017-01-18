@@ -1,4 +1,4 @@
-package br.com.martinsdev.repeatedtaks.activities.main;
+package br.com.martinsdev.repeatedtaks.fragments;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -20,7 +20,7 @@ import br.com.martinsdev.repeatedtaks.model.Task;
  * Created by gabriel on 11/21/16.
  */
 
-public class NewTaskDialog extends DialogFragment {
+public class NewTaskDialogFragment extends DialogFragment {
     private NewTaskDialogListener callback;
     private EditText taskName;
 
@@ -47,7 +47,7 @@ public class NewTaskDialog extends DialogFragment {
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        NewTaskDialog.this.getDialog().cancel();
+                        NewTaskDialogFragment.this.getDialog().cancel();
                     }
                 });
 

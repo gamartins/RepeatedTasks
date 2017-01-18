@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,7 +16,6 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import br.com.martinsdev.repeatedtaks.R;
-import br.com.martinsdev.repeatedtaks.activities.main.NewTaskDialog;
 import br.com.martinsdev.repeatedtaks.adapter.TaskAdapter;
 import br.com.martinsdev.repeatedtaks.model.SingletonTaskList;
 import br.com.martinsdev.repeatedtaks.model.Task;
@@ -45,7 +45,7 @@ public class TaskListFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         taskList = SingletonTaskList.getTasks();
-        adapter = new TaskAdapter(taskList);
+        adapter = new TaskAdapter(taskList, (AppCompatActivity) getActivity());
         recyclerView.setAdapter(adapter);
 
         if(!Alarm.isSet(getActivity())){
@@ -58,7 +58,7 @@ public class TaskListFragment extends Fragment {
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NewTaskDialog taskDialog = new NewTaskDialog();
+                NewTaskDialogFragment taskDialog = new NewTaskDialogFragment();
                 taskDialog.show(getActivity().getSupportFragmentManager(), "dialog_new_task");
             }
         });
