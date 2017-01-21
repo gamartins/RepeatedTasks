@@ -1,7 +1,6 @@
 package br.com.martinsdev.repeatedtaks.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by gabriel on 10/14/16.

@@ -27,17 +27,13 @@
             android:value="br.com.martinsdev.repeatedtaks" />
         <!-- SugarApp Metadata End -->
 
-        <activity android:name=".activities.main.MainActivity">
-        </activity>
-
         <receiver android:name=".util.alarm.AlarmReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
-        <activity android:name=".activities.task.DetailedTaskActivity" />
-        <activity android:name=".NewMainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
