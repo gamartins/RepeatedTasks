@@ -37,12 +37,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
     @Override
     public void onBindViewHolder(TaskViewHolder holder, int position) {
         final int tempPosition = position;
+        final long taskId = tasks.get(position).getId();
+
         holder.taskName.setText(tasks.get(position).getName());
         holder.taskName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putInt("position", tempPosition);
+                bundle.putLong("taskId", taskId);
 
                 TaskDetailedFragment detailedFragment = new TaskDetailedFragment();
                 detailedFragment.setArguments(bundle);

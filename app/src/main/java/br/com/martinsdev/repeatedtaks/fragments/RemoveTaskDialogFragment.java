@@ -2,12 +2,11 @@ package br.com.martinsdev.repeatedtaks.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
-import android.util.Log;
+import android.widget.Toast;
 
 import br.com.martinsdev.repeatedtaks.model.SingletonTaskList;
 import br.com.martinsdev.repeatedtaks.model.Task;
@@ -17,7 +16,6 @@ import br.com.martinsdev.repeatedtaks.model.Task;
  */
 
 public class RemoveTaskDialogFragment extends DialogFragment {
-    private RemovedTask callback;
 
     @NonNull
     @Override
@@ -30,9 +28,10 @@ public class RemoveTaskDialogFragment extends DialogFragment {
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Task task = SingletonTaskList.getTasks().get(position);
+                        Task task = SingletonTaskList.getAllTasks().get(position);
                         SingletonTaskList.removeTask(task);
-                        callback.onRemovedTask();
+                        Toast.makeText(getActivity(), "Tarefa deletada", Toast.LENGTH_SHORT).show();
+                        getFragmentManager().popBackStack();
                     }
                 })
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -43,20 +42,5 @@ public class RemoveTaskDialogFragment extends DialogFragment {
                 });
 
         return builder.create();
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        try {
-            callback = (RemovedTask) context;
-        } catch (ClassCastException e) {
-            Log.d("NewSubjectFragment", "Activity doesn't implement the RemovedTask interface");
-        }
-    }
-
-    public interface RemovedTask {
-        void onRemovedTask();
     }
 }

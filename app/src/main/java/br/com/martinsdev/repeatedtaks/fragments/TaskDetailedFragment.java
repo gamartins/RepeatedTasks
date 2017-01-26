@@ -20,6 +20,7 @@ public class TaskDetailedFragment extends Fragment {
     private EditText taskName, taskDetails;
     private Task task;
     private int position;
+    private long taskId;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,9 +43,10 @@ public class TaskDetailedFragment extends Fragment {
         // Recebendo o elemento na posição definida em TaskAdapter
         Bundle bundle = this.getArguments();
         position = bundle.getInt("position");
+        taskId = bundle.getLong("taskId");
 
         // Lendo a tarefa no banco de dados
-        task = SingletonTaskList.getTasks().get(position);
+        task = SingletonTaskList.getTaskById(taskId);
 
         // Inflando os elementos do layout
         taskName = (EditText) view.findViewById(R.id.task_name);
@@ -69,8 +71,11 @@ public class TaskDetailedFragment extends Fragment {
                 task.setDetails(taskDetails.getText().toString());
                 task.save();
 
+                //Atualizando a TaskList do SingletonTaskLista
+                SingletonTaskList.notifyDataSetChanged();
+
                 // Fechando o fragment
-                getActivity().getSupportFragmentManager().popBackStack();
+                 getActivity().getSupportFragmentManager().popBackStack();
 
                 return true;
 

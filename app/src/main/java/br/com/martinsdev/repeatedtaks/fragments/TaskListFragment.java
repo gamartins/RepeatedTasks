@@ -23,13 +23,11 @@ import br.com.martinsdev.repeatedtaks.util.alarm.Alarm;
 
 public class TaskListFragment extends Fragment {
     private TaskAdapter adapter;
-    private ArrayList<Task> taskList;
     private RecyclerView recyclerView;
+    private ArrayList<Task> taskList;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_task_list, container, false);
     }
 
@@ -44,7 +42,7 @@ public class TaskListFragment extends Fragment {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        taskList = SingletonTaskList.getTasks();
+        taskList = getTaskList();
         adapter = new TaskAdapter(taskList, (AppCompatActivity) getActivity());
         recyclerView.setAdapter(adapter);
 
@@ -70,7 +68,12 @@ public class TaskListFragment extends Fragment {
         updateList();
     }
 
+    protected ArrayList<Task> getTaskList(){
+        return SingletonTaskList.getUncheckedTasks();
+    }
+
     public void updateList(){
+        taskList = getTaskList();
         adapter.notifyDataSetChanged();
     }
 }

@@ -40,7 +40,10 @@ public class NewTaskDialogFragment extends DialogFragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String taskNameString = taskName.getText().toString();
 
+                        // Atualizando a lista de tarefas
                         SingletonTaskList.addTask(new Task(taskNameString));
+                        SingletonTaskList.notifyDataSetChanged();
+
                         callback.onCreatedTask(taskNameString);
                     }
                 })

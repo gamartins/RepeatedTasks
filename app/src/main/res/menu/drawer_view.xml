@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_first_fragment"
+            android:id="@+id/today_tasks"
             android:icon="@drawable/ic_today_black"
             android:title="@string/today" />
         <item
-            android:id="@+id/nav_second_fragment"
+            android:id="@+id/all_tasks"
             android:icon="@drawable/ic_repeated_tasks"
             android:title="@string/all_tasks" />
     </group>
