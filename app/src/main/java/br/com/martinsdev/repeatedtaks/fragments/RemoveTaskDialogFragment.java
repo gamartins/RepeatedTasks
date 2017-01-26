@@ -22,13 +22,13 @@ public class RemoveTaskDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         Bundle bundle = getArguments();
-        final int position = bundle.getInt("position");
+        final long taskId = bundle.getLong("taskId");
 
         builder.setMessage("Deseja deletar essa tarefa ?")
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Task task = SingletonTaskList.getAllTasks().get(position);
+                        Task task = SingletonTaskList.getTaskById(taskId);
                         SingletonTaskList.removeTask(task);
                         Toast.makeText(getActivity(), "Tarefa deletada", Toast.LENGTH_SHORT).show();
                         getFragmentManager().popBackStack();

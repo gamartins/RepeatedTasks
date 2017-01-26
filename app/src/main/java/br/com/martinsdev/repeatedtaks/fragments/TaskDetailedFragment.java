@@ -83,7 +83,7 @@ public class TaskDetailedFragment extends Fragment {
                 RemoveTaskDialogFragment removeTaskDialog = new RemoveTaskDialogFragment();
                 Bundle bundle = new Bundle();
 
-                bundle.putInt("position", position);
+                bundle.putLong("taskId", taskId);
                 removeTaskDialog.setArguments(bundle);
                 removeTaskDialog.show(getActivity().getSupportFragmentManager(), "dialog_remove_task");
 

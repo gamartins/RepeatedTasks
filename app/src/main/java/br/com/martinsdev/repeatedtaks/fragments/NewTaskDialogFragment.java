@@ -42,7 +42,6 @@ public class NewTaskDialogFragment extends DialogFragment {
 
                         // Atualizando a lista de tarefas
                         SingletonTaskList.addTask(new Task(taskNameString));
-                        SingletonTaskList.notifyDataSetChanged();
 
                         callback.onCreatedTask(taskNameString);
                     }

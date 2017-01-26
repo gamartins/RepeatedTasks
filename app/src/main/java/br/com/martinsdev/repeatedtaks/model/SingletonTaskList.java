@@ -43,11 +43,13 @@ public class SingletonTaskList {
     public static void addTask(Task task){
         tasks.add(task);
         task.save();
+        notifyDataSetChanged();
     }
 
     public static void removeTask(Task task) {
         tasks.remove(task);
         task.delete();
+        notifyDataSetChanged();
     }
 
     public static void resetTasks(){
