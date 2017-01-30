@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements NewTaskDialogFrag
                 // Configurando o fragment e inserindo no fragment principal
                 TaskListAllFragment listAllFragment = new TaskListAllFragment();
                 manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.fragment_principal, taskFragment).commit();
+                manager.beginTransaction().replace(R.id.fragment_principal, listAllFragment).commit();
                 break;
 
             default:

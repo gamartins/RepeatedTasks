@@ -1,6 +1,7 @@
 package br.com.martinsdev.repeatedtaks.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by gabriel on 10/14/16.
@@ -33,7 +34,10 @@ public class SingletonTaskList {
     }
 
     public static ArrayList<Task> getAllTasks() {
-        return tasks;
+        ArrayList<Task> allTasks = new ArrayList<>();
+        allTasks.addAll(Task.listAll(Task.class));
+
+        return allTasks;
     }
 
     public static Task getTaskById(long id) {
