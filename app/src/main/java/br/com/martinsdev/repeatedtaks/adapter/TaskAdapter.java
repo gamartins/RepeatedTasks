@@ -76,4 +76,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
     public int getItemCount() {
         return tasks.size();
     }
+
+    public void updateTasks(ArrayList<Task> tasks){
+        this.tasks = tasks;
+        notifyDataSetChanged();
+    }
 }
