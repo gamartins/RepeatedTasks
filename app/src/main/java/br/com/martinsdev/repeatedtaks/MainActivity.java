@@ -1,5 +1,6 @@
 package br.com.martinsdev.repeatedtaks;
 
+import android.app.AlarmManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import br.com.martinsdev.repeatedtaks.fragments.NewTaskDialogFragment;
 import br.com.martinsdev.repeatedtaks.fragments.TaskListAllFragment;
 import br.com.martinsdev.repeatedtaks.fragments.TaskListFragment;
+import br.com.martinsdev.repeatedtaks.util.alarm.Alarm;
 
 public class MainActivity extends AppCompatActivity implements NewTaskDialogFragment.NewTaskDialogListener {
     private DrawerLayout mDrawer;
@@ -30,6 +32,12 @@ public class MainActivity extends AppCompatActivity implements NewTaskDialogFrag
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Configurando o alarme
+
+        if(!Alarm.isSet(this)){
+            Alarm.setAlarm(this, 4, 0, AlarmManager.INTERVAL_DAY);
+        }
 
         // Configurando a Toolbar para substituir a ActionBar
         toolbar = (Toolbar) findViewById(R.id.toolbar);

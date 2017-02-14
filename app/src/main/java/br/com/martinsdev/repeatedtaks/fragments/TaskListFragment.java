@@ -44,10 +44,6 @@ public class TaskListFragment extends Fragment {
         adapter = new TaskAdapter(getTaskList(), (AppCompatActivity) getActivity());
         recyclerView.setAdapter(adapter);
 
-        if(!Alarm.isSet(getActivity())){
-            Alarm.setAlarm(getActivity(), 4, 0, AlarmManager.INTERVAL_DAY);
-        }
-
         // Configuração do botão para adicionar uma nova tarefa
         FloatingActionButton actionButton;
         actionButton = (FloatingActionButton) view.findViewById(R.id.button_add_task);
@@ -63,6 +59,7 @@ public class TaskListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        updateList();
     }
 
     protected ArrayList<Task> getTaskList(){

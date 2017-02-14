@@ -13,6 +13,18 @@
     <string name="today">Hoje</string>
     <string name="all_tasks">Todas as tarefas</string>
 
+    <!-- Nos spinners para criação de tarefas -->
+    <string name="daily">Diário</string>
+    <string name="weekly">Semanal</string>
+    <string name="monthly">Mensal</string>
+    <string name="seg_acron">SEG</string>
+    <string name="ter_acron">TER</string>
+    <string name="qua_acron">QUA</string>
+    <string name="qui_acron">QUI</string>
+    <string name="sex_acron">SEX</string>
+    <string name="sab_acron">SAB</string>
+    <string name="dom_acron">DOM</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

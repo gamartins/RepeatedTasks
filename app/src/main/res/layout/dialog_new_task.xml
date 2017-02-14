@@ -12,4 +12,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+        <Spinner
+            android:id="@+id/spinner_repetition"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:entries="@array/repetitions_array"/>
+
+        <Spinner
+            android:id="@+id/spinner_start_date"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:entries="@array/starter_date_weekly"/>
+
+    </LinearLayout>
+
 </LinearLayout>

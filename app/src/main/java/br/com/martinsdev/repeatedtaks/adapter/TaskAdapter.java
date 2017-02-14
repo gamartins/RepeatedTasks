@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import br.com.martinsdev.repeatedtaks.R;
@@ -40,6 +41,16 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
         final long taskId = tasks.get(position).getId();
 
         holder.taskName.setText(tasks.get(position).getName());
+
+        /* Exibindo a data para teste do software */
+
+        /*SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
+        tasks.get(position).getNextRepetition().getTime();
+        String date = s.format(tasks.get(position).getNextRepetition().getTime());
+        holder.taskName.setText(tasks.get(position).getName() + " | Next: " + date);*/
+
+        /* Fim da alteração no código */
+
         holder.taskName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

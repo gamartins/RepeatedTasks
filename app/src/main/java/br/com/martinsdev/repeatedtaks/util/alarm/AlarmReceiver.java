@@ -19,7 +19,8 @@ public class AlarmReceiver extends BroadcastReceiver {
             Alarm.setAlarm(context,4,0,AlarmManager.INTERVAL_DAY);
         }
 
-        SingletonTaskList.resetTasks();
+        SingletonTaskList.resetTodayTasks();
+
         Toast.makeText(context, "Tarefas resetadas", Toast.LENGTH_SHORT).show();
     }
 }
